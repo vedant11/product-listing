@@ -1,13 +1,14 @@
 import { fetchMovies } from "@utils";
 import { HomeProps } from "@types";
 import { yearsOfProduction } from "@constants";
-import { MovieCard, ShowMore, CustomFilter } from "@components";
+import { MovieCard, ShowMore, CustomFilter, SearchBar } from "@components";
 
 export default async function Home({ searchParams }: HomeProps) {
-  const page_number = Number(searchParams.page_number || 1);
+  const page = Number(searchParams.page || 1);
   const allMovies = await fetchMovies({
-    page_number: page_number,
+    page: page,
     year_number: searchParams.year_number,
+    search_title: String(searchParams.search_title||''),
   });
   
   const isDataEmpty = !Array.isArray(allMovies) || allMovies.length < 1 || !allMovies;
@@ -18,10 +19,11 @@ export default async function Home({ searchParams }: HomeProps) {
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
         <div className='home__text-container'>
           <h1 className='text-4xl font-extrabold'>CD Catalogue</h1>
-          <p>Explore out movies you might like</p>
+          <p>Explore popular movies you might like</p>
         </div>
 
         <div className='home__filters'>
+        <SearchBar />
 
           <div className='home__filter-container'>
             <CustomFilter title='year_number' options={yearsOfProduction} />
@@ -37,12 +39,12 @@ export default async function Home({ searchParams }: HomeProps) {
             </div>
             <div className='mx-auto flex justify-between items-center'>
               <ShowMore
-                pageNumber={page_number-1}
+                pageNumber={page-1}
                 title={'Previous'}
                 />
-              Page{page_number}
+              Page{page}
               <ShowMore
-                pageNumber={page_number+1}
+                pageNumber={page+1}
                 title={'Next'}
                 />
             </div>

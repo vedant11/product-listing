@@ -12,8 +12,7 @@ const ShowMore = ({ pageNumber, title }: ShowMoreProps) => {
   const nextExists = pageNumber<=pageMax;
   const previousExists = pageNumber>=1;
   const handleNavigation = () => {
-    const newPathname = updateSearchParams("page_number", `${pageNumber}`);
-    
+    const newPathname = updateSearchParams("page", `${pageNumber}`);
     router.push(newPathname);
   };
 

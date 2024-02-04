@@ -4,6 +4,8 @@ import CustomFilter from "./CustomFilter";
 import Footer from "./Footer";
 import NavBar from "./Navbar";
 import ShowMore from "./ShowMore";
+import SearchBar from "./Searchbar";
+
 
 export {
   MovieCard,
@@ -12,4 +14,5 @@ export {
   Footer,
   NavBar,
   ShowMore,
+  SearchBar
 };

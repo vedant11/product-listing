@@ -3,7 +3,7 @@ import "./globals.css";
 import { Footer, NavBar } from "@components";
 
 export const metadata = {
-  title: "Blue Ray Hub",
+  title: "BlueWave CD Catalogue",
   description: "Discover latest Blu Ray CDs with fan-service cuts and content",
 };
 

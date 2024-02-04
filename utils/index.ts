@@ -20,7 +20,6 @@ export const deleteSearchParams = (type: string) => {
 
   // Delete the specified search parameter
   newSearchParams.delete(type.toLocaleLowerCase());
-
   // Construct the updated URL pathname with the deleted search parameter
   const newPathname = `${window.location.pathname}?${newSearchParams.toString()}`;
 
@@ -28,15 +27,18 @@ export const deleteSearchParams = (type: string) => {
 };
 
 export async function fetchMovies(filters: FilterProps) {
-  const pageNumber = filters.page_number;
+  const pageNumber = filters.page;
   const headers: HeadersInit = {
     "Authorization": `Bearer ${process.env.TMDB_API_READ_ACCESS_TOKEN}`,
     "accept": "application/json",
   };
 
   const response = await fetch(
+    filters.search_title!== "" ?`https://api.themoviedb.org/3/search/movie?query=${filters.search_title}\
+    &include_adult=false&language=en-US&page=${filters.page}` :
     `https://api.themoviedb.org/3/discover/movie?include_adult=\
-    false&include_video=false&language=en-US&page=${pageNumber}&sort_by=primary_release_date.asc&primary_release_year=${filters.year_number||2024}`,
+    false&include_video=false&language=en-US&page=${pageNumber}\
+    &sort_by=vote_count.desc&primary_release_year=${filters.year_number||2024}`,
     {
       headers: headers,
     }

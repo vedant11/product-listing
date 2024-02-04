@@ -12,8 +12,9 @@ export interface MovieCardProps {
 }
 
 export interface FilterProps {
-  page_number: number;
+  page: number;
   year_number: string;
+  search_title: string;
 }
 
 export interface HomeProps {

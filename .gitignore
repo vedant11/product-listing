@@ -1,0 +1,47 @@
+#  gitignore for nextjs project
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# dev
+.env
+.env.local
+/temp
+
+# next
+/.next
+
+# production
+/build
+/.next
+/out
+
+# misc
+.DS_Store
+*.pem
+*.log
+*.key
+*.crt
+*.srl
+*.csr
+*.pfx
+*.p12
+*.pid
+*.seed
+*.pid.lock
+*.log
+*.log.*
+*.log-*
+*.json
+*.lock
+*.sqlite
+*.sqlite3
+*.log
+*.log.*
+*.log-*
+*.log.*
+*.

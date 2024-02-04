@@ -35,7 +35,7 @@ export async function fetchMovies(filters: FilterProps) {
 
   const response = await fetch(
     filters.search_title!== "" ?`https://api.themoviedb.org/3/search/movie?query=${filters.search_title}\
-    &include_adult=false&language=en-US&page=${filters.page}` :
+    &include_adult=false&language=en-US&page=${filters.page}&primary_release_year=${filters.year_number||2024}` :
     `https://api.themoviedb.org/3/discover/movie?include_adult=\
     false&include_video=false&language=en-US&page=${pageNumber}\
     &sort_by=vote_count.desc&primary_release_year=${filters.year_number||2024}`,

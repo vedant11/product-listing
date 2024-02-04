@@ -17,9 +17,12 @@ const NavBar = () => (
       </Link>
 
       <CustomButton
-        title='Sign in'
+        title='contribute'
         btnType='button'
         containerStyles='text-primary-blue rounded-full bg-white min-w-[130px]'
+        // handleClick={() => // go to a new tab
+        //   window.open('https://www.notion.so/Contribute-4b1c9b8e6a8d4b6f9e5b4c0e5f6f5b9b', '_blank'
+        //   )} 
       />
     </nav>
   </header>

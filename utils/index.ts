@@ -35,7 +35,8 @@ export async function fetchMovies(filters: FilterProps) {
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&sort_by=popularity.desc`,
+    `https://api.themoviedb.org/3/discover/movie?include_adult=\
+    false&include_video=false&language=en-US&page=${pageNumber}&sort_by=primary_release_date.asc&primary_release_year=${filters.year_number||2024}`,
     {
       headers: headers,
     }

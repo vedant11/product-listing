@@ -4,9 +4,10 @@ import { yearsOfProduction } from "@constants";
 import { MovieCard, ShowMore, CustomFilter } from "@components";
 
 export default async function Home({ searchParams }: HomeProps) {
-  const page_number = searchParams.page_number || 1;
+  const page_number = Number(searchParams.page_number || 1);
   const allMovies = await fetchMovies({
     page_number: page_number,
+    year_number: searchParams.year_number,
   });
   
   const isDataEmpty = !Array.isArray(allMovies) || allMovies.length < 1 || !allMovies;
@@ -23,7 +24,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <div className='home__filters'>
 
           <div className='home__filter-container'>
-            <CustomFilter title='year' options={yearsOfProduction} />
+            <CustomFilter title='year_number' options={yearsOfProduction} />
           </div>
         </div>
 
@@ -34,14 +35,17 @@ export default async function Home({ searchParams }: HomeProps) {
                 <MovieCard movie={movie}/>
               ))}
             </div>
-            <ShowMore
-              pageNumber={page_number-1}
-              title={'Previous'}
-            />
-            <ShowMore
-              pageNumber={page_number+1}
-              title={'Next'}
-            />
+            <div className='mx-auto flex justify-between items-center'>
+              <ShowMore
+                pageNumber={page_number-1}
+                title={'Previous'}
+                />
+              Page{page_number}
+              <ShowMore
+                pageNumber={page_number+1}
+                title={'Next'}
+                />
+            </div>
           </section>
         ) : (
           <div className='home__error-container'>

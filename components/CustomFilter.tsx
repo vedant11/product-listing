@@ -15,7 +15,7 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
   // update the URL search parameters and navigate to the new URL
   const handleUpdateParams = (e: { title: string; value: string }) => {
     const newPathName = updateSearchParams(title, e.value.toLowerCase());
-
+    console.log('newPathName', newPathName); // Log the new pathname (URL with updated search parameters
     router.push(newPathName);
   };
 
@@ -24,6 +24,7 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
       <Listbox
         value={selected}
         onChange={(e) => {
+          console.log('here', e); // Log the selected option
           setSelected(e); // Update the selected option in state
           handleUpdateParams(e); // Update the URL search parameters and navigate to the new URL
         }}
